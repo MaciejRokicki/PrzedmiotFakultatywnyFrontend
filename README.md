@@ -1,4 +1,5 @@
 # 12.04.2021
+```
 Typy zmiennych (var, let, const)
 	var 	tekst = 'test' <- typ danych to 'test', czyli string
 	let 	mozna redeklarowac, czyli np. tekst = 'test1', tekst = 'test2'
@@ -34,3 +35,4 @@ Obiekty
 	};
 
 switch <- jak switch
+```
