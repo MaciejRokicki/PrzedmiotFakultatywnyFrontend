@@ -36,3 +36,21 @@ Obiekty
 
 switch <- jak switch
 ```
+
+# 19.04.2021
+```
+npx -v 															- wersja
+npx create-react-app <nazwa projektu> --template typescript		- tworzenie nowego projektu 
+packages.json 													- paczki
+yarn/npm install 												- pobiera paczki z packages.json
+app.tsx															- glowny plik, tu sie zaczyna 
+
+Uzywac arrow function
+Zwracac tylko jeden tag
+typescript a: string itd. 										<- zmienne, argumenty i cala reszta z typami, jak w c#
+Wyswietlanie zmiennych w template { <nazwa_zmiennej > }
+const [liczba, setLiczba] = React.useState(domyslna_wartosc)  	<- Hook'i
+FC/FunctionComponent 											<- przesylanie zmiennych w komponencie (dopisuje sie wartosc w html'u)
+? przy nazwie zmiennej, nullabel 								<- tak jak w c#
+onNumberChange &&  onNumberchange(num)							<- jezeli istnieje onNumberChange to wykonaj onNumberChange(num), mozna tez if(onNumberchange)
+```
