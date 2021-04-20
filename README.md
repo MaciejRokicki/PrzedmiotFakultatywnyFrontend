@@ -1,4 +1,4 @@
-# 12.04.2021
+# 12.04.2021 W
 ```
 Typy zmiennych (var, let, const)
 	var 	tekst = 'test' <- typ danych to 'test', czyli string
@@ -37,7 +37,7 @@ Obiekty
 switch <- jak switch
 ```
 
-# 19.04.2021
+# 19.04.2021 W
 ```
 npx -v 															- wersja
 npx create-react-app <nazwa projektu> --template typescript		- tworzenie nowego projektu 
@@ -53,4 +53,17 @@ const [liczba, setLiczba] = React.useState(domyslna_wartosc)  	<- Hook'i
 FC/FunctionComponent 											<- przesylanie zmiennych w komponencie (dopisuje sie wartosc w html'u)
 ? przy nazwie zmiennej, nullabel 								<- tak jak w c#
 onNumberChange &&  onNumberchange(num)							<- jezeli istnieje onNumberChange to wykonaj onNumberChange(num), mozna tez if(onNumberchange)
+```
+
+# 20.04.2021 CW
+
+```
+Zadania na dziś:
+1. Stworzyć oddzielny otypowany komponent przycisk i wyciągnąć jego funkcjonalność onClick jako props.
+Użyć tego komponentu zamiast <button> by zmieniać wyświetlaną liczbę
+2. Dodać przycisk który ustawi wartość początkową dla zmiennej.
+3. Dodać tak zwany 'conditional rendering' dla tekstów w zależności o wartości zmiennej typu number:
+a. Gdy liczba większa od 10 wyświetlić tekst 'Liczba jest większa od 10';
+b. Gdy liczba mniejsza od -10 wyświetlić tekst '	';
+c. Gdy liczba jest większa od 15 schować tekst z pkt a i wyświetlnić tekst 'Liczba przekroczona'
 ```
