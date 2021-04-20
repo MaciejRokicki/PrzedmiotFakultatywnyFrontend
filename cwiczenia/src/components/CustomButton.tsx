@@ -4,9 +4,9 @@ interface ButtonProps {
     onClickAction: () => void;
 }
 
-const CustomButton:React.FunctionComponent<ButtonProps> = ({onClickAction, children}) => {
+const CustomButton:React.FunctionComponent<ButtonProps> = (props) => {
     return (
-        <button onClick={ onClickAction }>{ children }</button>
+        <button onClick={ props.onClickAction }>{ props.children }</button>
     );
 }
 
