@@ -64,6 +64,6 @@ Użyć tego komponentu zamiast <button> by zmieniać wyświetlaną liczbę
 2. Dodać przycisk który ustawi wartość początkową dla zmiennej.
 3. Dodać tak zwany 'conditional rendering' dla tekstów w zależności o wartości zmiennej typu number:
 a. Gdy liczba większa od 10 wyświetlić tekst 'Liczba jest większa od 10';
-b. Gdy liczba mniejsza od -10 wyświetlić tekst '	';
+b. Gdy liczba mniejsza od -10 wyświetlić tekst 'Liczba jest mniejsza od -10';
 c. Gdy liczba jest większa od 15 schować tekst z pkt a i wyświetlnić tekst 'Liczba przekroczona'
 ```
