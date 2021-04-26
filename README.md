@@ -67,3 +67,14 @@ a. Gdy liczba większa od 10 wyświetlić tekst 'Liczba jest większa od 10';
 b. Gdy liczba mniejsza od -10 wyświetlić tekst 'Liczba jest mniejsza od -10';
 c. Gdy liczba jest większa od 15 schować tekst z pkt a i wyświetlnić tekst 'Liczba przekroczona'
 ```
+
+# 26.04.2021 W
+```
+pierw reactowe importy, potem wlasne
+exact musi byc tylko okreslony kawalek strony zeby zadzialalo <- w route
+* <- 404 PageNotFound
+route'y
+puszczanie id po url
+useHistory <- redirect
+style w makeStyles
+```
