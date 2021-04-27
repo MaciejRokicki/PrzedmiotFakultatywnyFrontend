@@ -1,39 +1,35 @@
-import React from 'react';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
+
+import { makeStyles } from '@material-ui/core/styles';
+
+import SideMenu from './components/SideMenu';
+
+import Home from './views/home/Home';
+import History from './views/history/History';
+import NewBill from './views/newBill/NewBill';
+import PageNotFound from './views/pageNotFound/PageNotFound';
+
 import './App.css';
-import CustomButton from './components/CustomButton';
 
-function App() {
+const useStyles = makeStyles({
+  test: {
+      width: '1000px'
+  },
+});
 
-  const [counter, setCounter] = React.useState(0);
-
-  const increaseCounter = (num: number) => {
-    setCounter(counter + num);
-  }
-
-  const decreaseCounter = (num: number) => {
-    setCounter(counter - num);
-  }
-
-  const initValueForCounter = (num: number) => {
-    setCounter(num);
-  }
+const App = () => {
 
   return (
     <div className="App">
-      {
-        counter > 15 && (<div>Liczba przekroczona.</div>)
-      }
-      {
-        counter > 10 && counter <= 15 && (<div>Liczba jest większa od 10.</div>)
-      }
-      {
-        counter < -10 && (<div>Liczba jest mniejsza od -10.</div>)
-      }
-
-      <CustomButton onClickAction={() => initValueForCounter(10)}>Ustaw 10</CustomButton>
-      <CustomButton onClickAction={() => decreaseCounter(1)}>-</CustomButton>
-      { counter }
-      <CustomButton onClickAction={() => increaseCounter(1)}>+</CustomButton>
+      <BrowserRouter>
+      <SideMenu/>
+        <Switch>
+          <Route path="/" component={Home} exact/>
+          <Route path="/newBill" component={NewBill} exact/>
+          <Route path="/history" component={History} />
+          <Route path="*" component={PageNotFound}/>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }

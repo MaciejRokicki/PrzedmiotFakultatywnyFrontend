@@ -78,3 +78,8 @@ puszczanie id po url
 useHistory <- redirect
 style w makeStyles
 ```
+
+# 27.04.2021 CW
+```
+Menu
+```
