@@ -95,3 +95,11 @@ Dodanie topbar'a
 Rework sidebar'a na responsywny
 Wyświetlanie contentu
 ```
+
+# 10.05.2021 W
+```
+- requesty
+- OMDb API
+- fetch
+- !! <- konwertuje na bool'a
+```
