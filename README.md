@@ -103,3 +103,17 @@ Wyświetlanie contentu
 - fetch
 - !! <- konwertuje na bool'a
 ```
+
+# 11.05.2021 CW
+```
+- requesty
+```
+
+# 17.05.2021 W
+```
+- redux
+- store'y
+- reducer'y
+- actions
+- selector'y
+```

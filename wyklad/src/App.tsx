@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-
+import { Provider } from 'react-redux';
 // import CustomHeader from './components/CustomHeader';
 // import Counter from './components/Counter';
 import Home from './views/home/Home';
@@ -8,6 +8,7 @@ import Movie from './views/movie/Movie';
 import Page404 from './views/page404/Page404';
 
 import './App.css';
+import store from './store';
 
 
 const App = () => {
@@ -36,11 +37,13 @@ const App = () => {
         }
       </CustomHeader> */}
       <BrowserRouter>
-        <Switch>
-          <Route path="/" component={Home} exact/>
-          <Route path="/movie/:id" component={Movie} />
-          <Route path="*" component={Page404}/>
-        </Switch>
+      <Provider store={ store }>
+          <Switch>
+            <Route path="/" component={Home} exact/>
+            <Route path="/movie/:id" component={Movie} />
+            <Route path="*" component={Page404}/>
+          </Switch>
+        </Provider>
       </BrowserRouter>
     </div>
   );
