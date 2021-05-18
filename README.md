@@ -117,3 +117,10 @@ Wyświetlanie contentu
 - actions
 - selector'y
 ```
+
+# 18.05.2021 CW
+```
+- modele
+- paginacja
+- strona do wyświetlania wyników response'ów 
+```
