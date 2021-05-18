@@ -23,7 +23,7 @@ const requestFunction = <R>(
 
     let parsedUrl = url;
 
-    if(methodType === MethodType.POST || methodType === MethodType.PUT && payload) {
+    if((methodType === MethodType.POST || methodType === MethodType.PUT) && payload) {
         options.body = JSON.stringify(payload);
     } else if (payload) {
         const query = Object

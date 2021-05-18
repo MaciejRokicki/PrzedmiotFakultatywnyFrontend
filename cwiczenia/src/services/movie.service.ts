@@ -1,10 +1,12 @@
 import http from '../utils/http';
 import { apiKey } from '../key';
+import { Page } from '../entities/page';
+import { Movie } from '../entities/movie';
 
 const url = 'http://www.omdbapi.com/';
 
 const movieService = {
-    searchByName: async(name: string, page: number) => {
+    searchByName: async(name: string, page: number): Promise<Page<Movie> | undefined> => {
         try {
             const response: any = await http.get(url, {
                 apikey:  apiKey,
@@ -14,29 +16,38 @@ const movieService = {
 
             if(response?.Error) {
                 console.log(response.Error);
-                return null;
+                return undefined;
             } else {
-                return {
-                    totalResults: parseInt(response.totalResults, 10),
-                    movies: response.Search.map((movie: any) => ({
-                        id: movie.imdbID,
-                        poster: movie.Poster,
-                        title: movie.Title,
-                        type: movie.Type,
-                        year: movie.Year
-                    }))
-                }
+                return new Page<Movie>(
+                    parseInt(response.totalResults, 10),
+                    page,
+                    response.Search,
+                    true
+                );
             }
         } catch(error) {
             console.log(error);
         }
     },
-    getById: async (id: string) => {
+    getById: async (id: string): Promise<Movie | undefined> => {
         try {
             const response: any = await http.get(url, {
                 apikey:  apiKey,
                 i: id
             });
+
+            if(response?.Error) {
+                console.log(response.Error);
+                return undefined;
+            } else {
+                return new Movie(
+                    response.id,
+                    response.title,
+                    response.year,
+                    response.type,
+                    response.poster
+                )
+            }
         } catch(error) {
             console.log(error);
         }
