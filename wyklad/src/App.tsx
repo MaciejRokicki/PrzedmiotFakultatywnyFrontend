@@ -9,6 +9,7 @@ import Page404 from './views/page404/Page404';
 
 import './App.css';
 import store from './store';
+import TodoPanel from './views/todoPanel/TodoPanel';
 
 
 const App = () => {
@@ -41,6 +42,7 @@ const App = () => {
           <Switch>
             <Route path="/" component={Home} exact/>
             <Route path="/movie/:id" component={Movie} />
+            <Route path="/todos" component={TodoPanel} />
             <Route path="*" component={Page404}/>
           </Switch>
         </Provider>

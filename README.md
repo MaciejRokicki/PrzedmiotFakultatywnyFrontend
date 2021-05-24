@@ -124,3 +124,9 @@ Wyświetlanie contentu
 - paginacja
 - strona do wyświetlania wyników response'ów 
 ```
+
+# 24.05.2021 W
+```
+- hooks
+- selectory
+```
