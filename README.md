@@ -130,3 +130,15 @@ Wyświetlanie contentu
 - hooks
 - selectory
 ```
+
+# 25.05.2021 CW
+```
+- store
+- hooks
+- redux
+- reducer
+- selector
+- actions
+
+Wszystko to dla favorites i moviesToWatch
+```

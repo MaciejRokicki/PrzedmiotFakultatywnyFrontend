@@ -1,9 +1,12 @@
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import { Theme, makeStyles, createStyles  } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import MovieCreationIcon from '@material-ui/icons/MovieCreation';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+
+import store from './store';
 
 import SideMenu from './components/SideMenu';
 
@@ -49,12 +52,14 @@ const App = () => {
       <BrowserRouter>
         <SideMenu items={sidebarItems} />
         <div className={classes.content}>
-          <Switch>
-            <Route path="/" component={Home} exact />
-            <Route path="/toWatch" component={ToWatch} />
-            <Route path="/favorite" component={Favorite} />
-            <Route path="*" component={PageNotFound} />
-          </Switch>
+          <Provider store={ store }>
+            <Switch>
+              <Route path="/" component={Home} exact />
+              <Route path="/toWatch" component={ToWatch} />
+              <Route path="/favorite" component={Favorite} />
+              <Route path="*" component={PageNotFound} />
+            </Switch>
+          </Provider>
         </div>
       </BrowserRouter>
     </div>

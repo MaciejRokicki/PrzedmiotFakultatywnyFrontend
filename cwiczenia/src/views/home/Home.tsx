@@ -13,6 +13,9 @@ import { Card, CardActionArea, CardActions, CardContent, CardMedia, Typography }
 import movieService from "../../services/movie.service";
 import { Page } from "../../entities/page";
 import { Movie } from "../../entities/movie";
+import { useAction } from "../../hooks/useAction";
+import { FavoriteService } from "../../services/favorite.service";
+import { MoviesToWatchService } from "../../services/moviesToWatch.service";
 
 const useStyles = makeStyles(() =>
     createStyles({
@@ -22,19 +25,27 @@ const useStyles = makeStyles(() =>
         },
         movieContainer: {
             display: 'flex',
-            justifyContent: 'center'  ,
+            justifyContent: 'center',
             flexDirection: 'row',
             flexWrap: 'wrap'
         },
         movieItem: {
             margin: '10px',
-            width: '300px'
+            width: '300px',
+            display: 'flex',
+            flexWrap: 'wrap'
+        },
+        card: {
+            alignSelf: 'flex-start',
+        },
+        cardActions: {
+            alignSelf: 'flex-end'
         },
         buttonContainer: {
             display: 'flex',
             flexDirection: 'column',
             flexWrap: 'wrap',
-            alignItems: 'center'          
+            alignItems: 'center'
         },
         buttonItem: {
             alignSelf: 'center'
@@ -61,6 +72,9 @@ const useStyles = makeStyles(() =>
 
 const Home = () => {
     const classes = useStyles();
+
+    const favoriteActions = useAction(FavoriteService);
+    const moviesToWatchActions = useAction(MoviesToWatchService);
 
     const [currentPage, setCurrentPage] = React.useState<number>(1);
     const [previousPageAvailable, setPreviousPageAvailable] = React.useState<boolean>(false);
@@ -96,7 +110,7 @@ const Home = () => {
         setCurrentPage(tmp);
 
         setPreviousPageAvailable(true);
-        if(tmp === pageResult?.Pages) {
+        if (tmp === pageResult?.Pages) {
             setNextPageAvailable(false);
         }
     }
@@ -107,7 +121,7 @@ const Home = () => {
         setCurrentPage(tmp);
 
         setNextPageAvailable(true);
-        if(tmp === 1) {
+        if (tmp === 1) {
             setPreviousPageAvailable(false);
         }
     }
@@ -115,65 +129,67 @@ const Home = () => {
     return (
         <div>
             <form className={classes.container} onSubmit={makeRequest}>
-                    <TextField
-                        className={classes.input}
-                        label="Tytuł"
-                        variant="filled"
-                        onChange={ handleInputTextChange }
-                        type="text"
-                    />
-                    <IconButton
-                        className={classes.button}
-                        type="submit"
-                    >
-                        <SearchIcon />
-                    </IconButton>
+                <TextField
+                    className={classes.input}
+                    label="Tytuł"
+                    variant="filled"
+                    onChange={handleInputTextChange}
+                    type="text"
+                />
+                <IconButton
+                    className={classes.button}
+                    type="submit"
+                >
+                    <SearchIcon />
+                </IconButton>
             </form>
             {pageResult ? (
                 <div>
                     <div>
-                        { pageResult.CurrentPage === pageResult.Pages ? (
-                            <span>{ (pageResult.CurrentPage -1 ) * 10 + pageResult.TotalResults % 10 } z { pageResult.TotalResults } wyników</span>
+                        {pageResult.CurrentPage === pageResult.Pages ? (
+                            <span>{(pageResult.CurrentPage - 1) * 10 + pageResult.TotalResults % 10} z { pageResult.TotalResults} wyników</span>
                         ) : (
-                            <span>{ pageResult.CurrentPage * 10 }  z { pageResult.TotalResults } wyników</span>
-                        )}     
+                            <span>{pageResult.CurrentPage * 10}  z { pageResult.TotalResults} wyników</span>
+                        )}
                     </div>
                     <div className={classes.movieContainer}>
-                        { pageResult.Items.map((movie: Movie, id: number) => {
+                        {pageResult.Items.map((movie: Movie, id: number) => {
                             return (
                                 <Card key={id} className={classes.movieItem}>
-                                    <CardActionArea>
+                                    <CardActionArea className={classes.card}>
                                         <CardMedia
                                             className={classes.media}
-                                            image={ movie.Poster }
+                                            image={movie.Poster}
                                             title="Contemplative Reptile"
                                         />
                                         <CardContent>
                                             <Typography gutterBottom variant="h5" component="h2">
-                                            { movie.Title }
+                                                {movie.Title}
                                             </Typography>
                                         </CardContent>
                                     </CardActionArea>
-                                    <CardActions>
-                                        <IconButton>
+                                    <CardActions className={classes.cardActions}>
+                                        <IconButton
+                                            onClick={() => { moviesToWatchActions.setNewMovieToWatch(movie) }}>
                                             <MovieCreationIcon />
                                         </IconButton>
-                                        <IconButton>
+                                        <IconButton
+                                            onClick={() => { favoriteActions.setNewFavorite(movie) }}>
                                             <FavoriteIcon />
                                         </IconButton>
                                     </CardActions>
-                            </Card>
+                                </Card>
                             )
-                        }) }
+                        })}
                     </div>
                     <div className={classes.buttonContainer}>
                         <div className={classes.buttonItem}>
-                            <IconButton 
+                            <IconButton
                                 onClick={previousPage}
                                 disabled={!previousPageAvailable}>
                                 <ArrowBackIcon />
                             </IconButton>
-                            { pageResult.CurrentPage } / { pageResult.Pages }
+                            {pageResult.CurrentPage} / {pageResult.Pages}
                             <IconButton
                                 onClick={nextPage}
                                 disabled={!nextPageAvailable}>

@@ -71,7 +71,7 @@ const SideMenu = (props: Props) => {
         setMobileOpen(!mobileOpen);
     };
 
-    const [topbarText, setTopbarText] = React.useState("Strona główna");
+    const [topbarText, setTopbarText] = React.useState("Szukaj");
 
     const drawer = (
         <div>
